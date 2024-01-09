@@ -18,6 +18,12 @@
         overlays = [ overlay ];
       };
 
+      nodejs-pkgs_ = final: (import ./pkgs/node-pkgs/default.nix {
+        inherit (final) system;
+        pkgs = final;
+        nodejs = final.nodejs-lib;
+      }).package;
+
       overlay = final: prev: {
 
         nodejs-lib = prev.nodejs.overrideAttrs (old: {
@@ -28,11 +34,7 @@
 
           src-metacall-core = inputs.metacall-core;
 
-          nodejs-pkgs = (import ./pkgs/node-pkgs/default.nix {
-            inherit (final) system;
-            pkgs = final;
-            nodejs = final.nodejs-lib;
-          }).package;
+          nodejs-pkgs = nodejs-pkgs_ final;
 
         };
 
@@ -40,6 +42,10 @@
 
     in
       {
+
+        inherit pkgs;
+
+        nodejs-pkgs = nodejs-pkgs_ pkgs;
 
         inherit overlay;
 
