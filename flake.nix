@@ -29,7 +29,7 @@
           src-metacall-core = inputs.metacall-core;
 
           nodejs-pkgs = (import ./pkgs/node-pkgs/default.nix {
-            inherit system;
+            inherit (final) system;
             pkgs = final;
             nodejs = final.nodejs-lib;
           }).package;
@@ -41,9 +41,7 @@
     in
       {
 
-        # inherit pkgs inputs;
-
-        # inherit (pkgs) metacall-core;
+        inherit overlay;
 
         packages.${system}.default = pkgs.metacall-core;
 
