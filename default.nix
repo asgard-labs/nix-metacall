@@ -42,6 +42,10 @@ stdenv.mkDerivation
     cp -r ${nodejs-pkgs}/lib/node_modules/node_loader_bootstrap/node_modules/* ./node_modules/
   '';
 
+  postInstall = ''
+    cp -r ${nodejs-pkgs}/lib/node_modules/node_loader_bootstrap/node_modules/* $out/lib/node_modules/
+  '';
+
   nativeBuildInputs = [ cmake pkg-config ];
   
 }
