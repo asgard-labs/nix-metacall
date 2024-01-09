@@ -1,2 +1,2 @@
 # nix-metacall
-metacall packaged with nix
+MetaCall (https://github.com/metacall/core) packaged with nix
