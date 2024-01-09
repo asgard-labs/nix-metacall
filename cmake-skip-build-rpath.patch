@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 18275d3a..06597ec0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -226,7 +226,7 @@ else()
+ endif()
+ 
+ # Set runtime path
+-set(CMAKE_SKIP_BUILD_RPATH				FALSE)	# Add absolute path to all dependencies for BUILD
++set(CMAKE_SKIP_BUILD_RPATH				TRUE)	# Add absolute path to all dependencies for BUILD
+ set(CMAKE_BUILD_WITH_INSTALL_RPATH		FALSE)	# Use CMAKE_INSTALL_RPATH for INSTALL
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH	TRUE)	# Add path to dependencies for INSTALL
+ 
