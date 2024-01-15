@@ -11,6 +11,9 @@
   nodejs-lib,
   nodejs-pkgs,
 
+  texlive,
+  doxygen
+
 }:
 
 stdenv.mkDerivation
@@ -33,6 +36,7 @@ stdenv.mkDerivation
     "-DNODE_ROOT=${nodejs-lib}"
     "-DOPTION_BUILD_GUIX=ON"
     "-DOPTION_BUILD_SCRIPTS=OFF"
+    "-DOPTION_BUILD_DOCS=ON"
   ];
 
   buildInputs = [ rapidjson nodejs-lib ];
@@ -46,6 +50,6 @@ stdenv.mkDerivation
     cp -r ${nodejs-pkgs}/lib/node_modules/node_loader_bootstrap/node_modules/* $out/lib/node_modules/
   '';
 
-  nativeBuildInputs = [ cmake pkg-config ];
+  nativeBuildInputs = [ cmake pkg-config doxygen texlive.combined.scheme-full ];
   
 }
